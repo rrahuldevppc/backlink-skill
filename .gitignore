@@ -1,0 +1,11 @@
+# Your real config — never commit (contains sheet IDs, client names)
+config.yml
+config.yaml
+
+# Local site database exports
+data/*.csv
+
+# Scratch
+*.log
+__pycache__/
+.DS_Store
