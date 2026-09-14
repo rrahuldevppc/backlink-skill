@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────────────────────
+#  backlink-builder — team config
+#  Copy to config.yml (install.sh does this) and fill in.
+#  config.yml is gitignored. NEVER commit real IDs or names.
+# ─────────────────────────────────────────────────────────────
+
+# Google Sheets connector account to use (Composio / MCP alias).
+# Ask your team lead which account has the sheets shared.
+sheets_account: "REPLACE_ME"
+
+# The Control spreadsheet ID — the backend for everything.
+# Get it from your team lead. It is the long string in the sheet URL:
+# https://docs.google.com/spreadsheets/d/<THIS_PART>/edit
+control_sheet_id: "REPLACE_ME"
+
+# Tab names inside the Control sheet. Defaults match the standard template.
+tabs:
+  dispatch: "Dispatch"           # batch queue / state machine
+  site_db: "Site DB"             # reusable site database + ratings
+  registry: "Product Registry"   # clients/products ground truth
+  metrics: "Metrics"             # throughput scoreboard
+  index_check: "Index Check"     # Google indexing verdicts
+
+# Columns that hold credentials anywhere in your sheets.
+# The skill refuses to read or write these. Add every one you have.
+forbidden_ranges:
+  - sheet: "Tracker"
+    columns: "D:E"
+  - sheet: "Daily work report"
+    columns: "H:I"
+
+# Batch defaults
+defaults:
+  sites_per_batch: 10
+  dry_run: true            # true = show in chat, never write to the sheet
+
+# Optional: notify the team when a batch is queued.
+# Leave blank to just print the message in chat for you to forward.
+notify:
+  telegram_chat_id: ""
+  google_chat_webhook: ""
